@@ -33,6 +33,7 @@ public class DizionarioController {
 
 	@FXML
 	void doReset(ActionEvent event) {
+		
 		txtResult.setText("Reset!");
 	}
 
@@ -40,7 +41,13 @@ public class DizionarioController {
 	void doGeneraGrafo(ActionEvent event) {
 
 		try {
-			txtResult.setText("Controller -- TODO!");
+			try{
+				int numeroLettere = Integer.parseInt(inputNumeroLettere.getText());
+				model.createGraph(numeroLettere);
+			}catch(NumberFormatException npe){
+				txtResult.setText("Inserire dati validi!");
+			}
+			txtResult.setText("Grafo generato");
 			
 		} catch (RuntimeException re) {
 			txtResult.setText(re.getMessage());
@@ -51,7 +58,7 @@ public class DizionarioController {
 	void doTrovaGradoMax(ActionEvent event) {
 		
 		try {
-			txtResult.setText("Controller -- TODO!");
+			txtResult.setText(""+model.findMaxDegree());
 
 		} catch (RuntimeException re) {
 			txtResult.setText(re.getMessage());
@@ -62,7 +69,14 @@ public class DizionarioController {
 	void doTrovaVicini(ActionEvent event) {
 		
 		try {
-			txtResult.setText("Controller -- TODO!");
+			String parola  = "";
+			try{
+				parola = inputParola.getText();
+			}catch(NumberFormatException npe){
+				txtResult.setText("Inserire dati validi!");
+			}
+			
+			txtResult.setText(""+model.displayNeighbours(parola));
 
 		} catch (RuntimeException re) {
 			txtResult.setText(re.getMessage());
