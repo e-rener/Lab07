@@ -3,6 +3,7 @@ package it.polito.tdp.dizionario.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.dizionario.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,6 +28,8 @@ public class DizionarioController {
 	private Button btnTrovaVicini;
 	@FXML
 	private Button btnTrovaGradoMax;
+	
+	private Model model;
 
 	@FXML
 	void doReset(ActionEvent event) {
@@ -64,6 +67,10 @@ public class DizionarioController {
 		} catch (RuntimeException re) {
 			txtResult.setText(re.getMessage());
 		}
+	}
+	
+	public void setModel(Model model){
+		this.model = model;
 	}
 
 	@FXML
